@@ -20,6 +20,7 @@ curl -sSL https://get.docker.com | sh
 ## 2. Adding user to docker grp
 echo "Adding docker grp"
 sudo usermod -aG docker $USER
+sudo systemctl enable --now docker 
 
 ## Making mount points
 echo "Making Mount points"
@@ -27,8 +28,8 @@ sudo mkdir /mnt/pi /mnt/backup
 
 ## Adding fstab entries
 echo "Adding fstab entries"
-echo "UUID=$PI_UUID  /mnt/pi               ext4    defaults,noatime  0       1" | tee -a /etc/fstab
-echo "UUID=$BACKUP_UUID  /mnt/backup               ext4    defaults,noatime  0       1" | tee -a /etc/fstab
+echo "UUID=$PI_UUID  /mnt/pi               ext4    defaults,noatime  0       1" | sudo  tee -a /etc/fstab
+echo "UUID=$BACKUP_UUID  /mnt/backup               ext4    defaults,noatime  0       1" | sudo tee -a /etc/fstab
 
 ## Unmounting incase automount
 echo "Umounting stuff..."
