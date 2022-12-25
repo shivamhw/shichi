@@ -5,7 +5,7 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
     volumes:
-      - /mmnt/pi/meta/mysql_ncloud:/var/lib/mysql
+      - /mnt/pi/meta/mysql_ncloud:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD='shivam99'
       - MYSQL_PASSWORD='shivam99'
@@ -18,5 +18,7 @@ services:
     links:
       - db
     volumes:
-      - /mnt/pi/meta:/var/www/html
+      - /mnt/pi/meta/nextcloud:/var/www/html
+      - /mnt/pi/smb_share:/pi_smb
+      - /mnt/backup/smb_share:/backup_smb
     restart: always
