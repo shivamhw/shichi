@@ -13,6 +13,10 @@ sudo apt upgrade
 sudo pip install -U pip
 sudo apt install docker-compose
 
+## Static IP
+## User accounts 
+## SSH VNC ARM OVERCLOCK
+
 ## 1. Installing docker 
 echo "Installing Docker..."
 curl -sSL https://get.docker.com | sh
@@ -44,6 +48,7 @@ echo "Making dir for pi"
 mkdir /mnt/pi/meta
 mkdir /mnt/pi/cache
 mkdir /mnt/pi/downloads
+mkdir /mnt/pi/local_media
 
 ## 3. Installing portainer
 echo "Pulling Portainer"
@@ -55,8 +60,8 @@ sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/do
 
 ## Disable resolve
 echo "disable resolvd"
-systemctl disable systemd-resolved.service
-systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved.service
+sudo systemctl stop systemd-resolved
 
 ## Running pihole
 echo "running pihole..."
